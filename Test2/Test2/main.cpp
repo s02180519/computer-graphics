@@ -69,57 +69,6 @@ int main()
 	Shader screenShader("VertexShader_Framebuffer.vert", "FragmentShader_Framebuffer.frag");
 	Shader reflect_cubeShader("VertexShader_ReflectCube.vert","FragmentShader_ReflectCube.frag");
 	///////////////////////////////////////////////////////////////////////////////////////////////
-
-	Square cube[6] = { Square(new float[36]{-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,	 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,-0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,	-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,}),
-					   Square(new float[36]{-0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f, 0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f, 0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f, 0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f, -0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f, -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f}),
-					   Square(new float[36]{-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f, -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,	-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f, -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,	-0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f, -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f}),
-					   Square(new float[36]{0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f, 0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f, 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f, 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f, 0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f, 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f}),
-					   Square(new float[36]{-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f, 0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f, 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f, 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f, -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,	-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f}),
-					   Square(new float[36]{-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f, 0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f, 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,	 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,-0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f}) };
-	float cubeVertices[] = {
-	-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-	 0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-	 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-	 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-	-0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-
-	-0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-	-0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-
-	-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
-	-0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-	-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-	-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-	-0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
-	-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
-
-	 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-	 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-	 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
-
-	-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
-	 0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
-	 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
-	 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
-
-	-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
-	 0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
-	 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-	 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-	-0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-	-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
-	};
-	
 	
 	float quadVertices[] = {
 		// positions   // texCoords
@@ -131,37 +80,6 @@ int main()
 		 1.0f, -1.0f,  1.0f, 0.0f,
 		 1.0f,  1.0f,  1.0f, 1.0f
 	};
-	vector<std::string> faces
-	{
-		"textures/skybox/right.jpg",
-		"textures/skybox/left.jpg",
-		"textures/skybox/top.jpg",
-		"textures/skybox/bottom.jpg",
-		"textures/skybox/front.jpg",
-		"textures/skybox/back.jpg"
-	};
-
-
-	/////////////////////////////////////////Refract Cube///////////////////////////////////
-	GLuint cubeVAO;
-	glGenVertexArrays(1, &cubeVAO);
-	glBindVertexArray(cubeVAO);
-
-	GLuint cubeVBO;
-	glGenBuffers(1, &cubeVBO);
-	glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 6 * 36, NULL, GL_STATIC_DRAW);
-
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
-	glEnableVertexAttribArray(0);
-
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
-	glEnableVertexAttribArray(1);
-
-	glBindVertexArray(0);
-
-
-
 	
 	///////////////////////////////////////Буфер кадра///////////////////////////////////////////
 	GLuint quadVAO;
@@ -206,9 +124,6 @@ int main()
 		cout << "ERROR::FRAMEBUFFER:: Framebuffer is not complete!" << endl;
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-	/////////////////////////////////////////////////ТЕКСТУРА////////////////////////////////////
-	GLuint cubemapTexture = loadCubemap(faces);
-
 	/////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -231,68 +146,14 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glEnable(GL_DEPTH_TEST);
 
-		/*std::map<float, glm::vec3> sorted;
-		for (unsigned int i = 0; i < windows.size(); i++)
-		{
-			float distance = glm::length(camera.Position - windows[i]);
-			sorted[distance] = windows[i];
-		}*/
-
-		////////////////////////////////////////////////////Матрицы преобразования///////////////////////
-
-		glm::mat4 model = glm::mat4(1.0f);
-		glm::mat4 view;
-		glm::mat4 projection = glm::perspective(glm::radians(45.0f), (GLfloat)width / (GLfloat)height, 0.1f, 100.0f);
-
-		///////////////////////////////////////////Skybox+SimpleCube+Floor+Transparent/////////////////////////////////////////////////////////////
+		///////////////////////////////////////////Scene/////////////////////////////////////////////////////////////
 		glViewport(0, 0, 800, 600);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		
-		ourShader.Use();
-		ourShader.setInt("texture1", 0);
-
-		view = glm::mat4(glm::mat3(camera.GetViewMatrix()));
-		view = camera.GetViewMatrix();
 		
 		
 		scene.renderScene( ourShader, skyboxShader, reflect_cubeShader, refract_cubeShader, camera, deltaTime);
 
 
-		////////////////////////////Refract cube////////////////////////////////////////////////////////////
-
-		refract_cubeShader.Use();
-		refract_cubeShader.setInt("skybox", 0);
-
-		model = glm::mat4();
-		model = glm::translate(model, glm::vec3(-1.0f, 3.0f, -1.0f));
-
-		refract_cubeShader.setMat4("view", view);
-		refract_cubeShader.setMat4("projection", projection);
-		refract_cubeShader.setMat4("model", model);
-		refract_cubeShader.setVec3("cameraPos", camera.Position);
-
-		glBindVertexArray(cubeVAO);
-
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
-
-		std::map<double, Square*> sorted2;
-		for (unsigned int i = 0; i < 6; i++)
-		{
-			double distance2 = glm::length(camera.Position - (glm::vec3(-1.0f, 3.0f, -1.0f) + cube[i].Center));
-			sorted2[distance2] = &cube[i];
-		}
-
-		int c = 0;
-		for (std::map<double, Square*>::reverse_iterator it = sorted2.rbegin(); it != sorted2.rend(); ++it, c++)
-		{
-			glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
-			glBufferSubData(GL_ARRAY_BUFFER, sizeof(float) * 36 * c, sizeof(float) * 36, it->second->Vertices);
-		}
-
-		glDrawArrays(GL_TRIANGLES, 0, 36);
-
-		glBindVertexArray(0);
 		//////////////////////////////////////////Возвращение фреймбуфера//////////////////////////////////////////////////////
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -305,15 +166,10 @@ int main()
 		glBindVertexArray(quadVAO);
 		glBindTexture(GL_TEXTURE_2D, textureColorbuffer);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
-		///////////////////////////////////////////////////////////////////////////////////////////////////
-
-		//scene.renderScene(0, ourShader, skyboxShader, camera, deltaTime);
 
 		glfwSwapBuffers(window);
 	}
 
-	glDeleteVertexArrays(1, &cubeVAO);
-	glDeleteBuffers(1, &cubeVBO);
 	
 
 	glfwTerminate();

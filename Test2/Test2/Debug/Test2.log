@@ -1,2 +1,40 @@
-﻿  MyLib.cpp
+﻿  main.cpp
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(133): warning C4244: инициализация: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(226): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(227): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(230): warning C4244: инициализация: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(231): warning C4244: инициализация: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(233): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(234): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(241): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+LINK : warning LNK4098: сшсышюЄхър яю єьюыўрэш■ "LIBCMT" яЁюЄштюЁхўшЄ шёяюы№чютрэш■ фЁєушї сшсышюЄхъ; шёяюы№чєщЄх ярЁрьхЄЁ /NODEFAULTLIB:library
+MyLib.obj : warning LNK4217: ыюъры№эю юяЁхфхыхээ√щ ёшьтюы _glewInit@0 шьяюЁЄшЁютрэ т ЇєэъЎш■ "struct GLFWwindow * __cdecl CreateWindow(void (__cdecl*)(struct GLFWwindow *,int,int,int,int),void (__cdecl*)(struct GLFWwindow *,double,double),char const *,int,int)" (?CreateWindow@@YAPAUGLFWwindow@@P6AXPAU1@HHHH@ZP6AX0NN@ZPBDHH@Z)
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewActiveTexture
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewBindBuffer
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewBufferData
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewGenBuffers
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewAttachShader
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewCompileShader
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewCreateProgram
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewCreateShader
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewDeleteShader
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewEnableVertexAttribArray
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewGetProgramInfoLog
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewGetProgramiv
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewGetShaderInfoLog
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewGetShaderiv
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewGetUniformLocation
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewLinkProgram
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewShaderSource
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewUniform1f
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewUniform1i
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewUniform3f
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewUniformMatrix4fv
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewUseProgram
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewVertexAttribPointer
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewGenerateMipmap
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewBindVertexArray
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы ___glewGenVertexArrays
+MyLib.obj : warning LNK4049: шьяюЁЄшЁютрэ ыюъры№эю юяЁхфхыхээ√щ ёшьтюы _glewExperimental
+glew32s.lib(glew.obj) : warning LNK4099: "vc120.pdb" PDB эх эрщфхэ ё "glew32s.lib(glew.obj)" шыш эр "C:\Users\redki\Desktop\╠р°уЁрЇ\Test2\Debug\vc120.pdb"; ъюьяюэютър юс·хъЄр т√яюыэ хЄё  ъръ яЁш юЄёєЄёЄтшш юЄырфюўэ√ї фрээ√ї
   Test2.vcxproj -> C:\Users\redki\Desktop\Машграф\Test2\Debug\Test2.exe
