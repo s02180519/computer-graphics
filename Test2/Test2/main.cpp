@@ -29,6 +29,7 @@ GLfloat lastFrame = 0.0f;
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void do_movement();
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 
@@ -254,7 +255,7 @@ int main()
 		view = camera.GetViewMatrix();
 		
 		
-		scene.renderScene( ourShader, skyboxShader, camera, deltaTime);
+		scene.renderScene( ourShader, skyboxShader, reflect_cubeShader, camera, deltaTime);
 
 
 		////////////////////////////Refract cube////////////////////////////////////////////////////////////
@@ -372,4 +373,9 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 	lastY = ypos;
 
 	camera.ProcessMouseMovement(xoffset, yoffset, true);
+}
+
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+	camera.ProcessMouseScroll(yoffset);
 }

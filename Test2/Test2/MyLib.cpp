@@ -109,7 +109,7 @@ void Shader::setMat4(const char* s, glm::mat4 a)
 	glUniformMatrix4fv(sLoc, 1, GL_FALSE, glm::value_ptr(a));
 }
 
-Camera::Camera(glm::vec3 position, glm::vec3 up, GLfloat yaw, GLfloat pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY)
+Camera::Camera(glm::vec3 position, glm::vec3 up, GLfloat yaw, GLfloat pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY), Zoom(ZOOM)
 {
 	this->Position = position;
 	this->WorldUp = up;
@@ -118,7 +118,7 @@ Camera::Camera(glm::vec3 position, glm::vec3 up, GLfloat yaw, GLfloat pitch) : F
 	this->updateCameraVectors();
 }
 
-Camera::Camera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat upX, GLfloat upY, GLfloat upZ, GLfloat yaw, GLfloat pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY)
+Camera::Camera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat upX, GLfloat upY, GLfloat upZ, GLfloat yaw, GLfloat pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY), Zoom(ZOOM)
 {
 	this->Position = glm::vec3(posX, posY, posZ);
 	this->WorldUp = glm::vec3(upX, upY, upZ);
@@ -176,6 +176,15 @@ void Camera::updateCameraVectors()
 
 	this->Right = glm::normalize(glm::cross(this->Front, this->WorldUp));
 	this->Up = glm::normalize(glm::cross(this->Right, this->Front));
+}
+
+void Camera::ProcessMouseScroll(float yoffset)
+{
+	Zoom -= (float)yoffset;
+	if (Zoom < 1.0f)
+		Zoom = 1.0f;
+	if (Zoom > 45.0f)
+		Zoom = 45.0f;
 }
 
 Square::Square(float* vertices)
@@ -436,7 +445,7 @@ void Scene::renderSkybox()
 }
 
 void Scene::renderReflectCube() {
-	if (transparentVAO == 0)
+	if (reflectCubeVAO == 0)
 	{
 		float vertices[] = {
 		-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
@@ -494,7 +503,6 @@ void Scene::renderReflectCube() {
 	}
 
 	glBindVertexArray(reflectCubeVAO);
-	glBindTexture(GL_TEXTURE_CUBE_MAP, cubeTexture);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	glBindVertexArray(0);
 }
@@ -532,19 +540,14 @@ void Scene::renderTransparent() {
 	glBindVertexArray(0);
 }
 
-void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Camera& camera, GLfloat deltaTime)
+void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect_cubeShader, Camera& camera, GLfloat deltaTime)
 {
-	/*std::map<float, glm::vec3> sorted;
-	for (unsigned int i = 0; i < sizeof(transparentPositions); i++)
-	{
-		float distance = glm::length(camera.Position - transparentPositions[i]);
-		sorted[distance] = transparentPositions[i];
-	}*/
 	
 	//////////////////////////////////////////////////Матрицы преобразования//////////////////////////////////////////////////////////////////
 	glm::mat4 model = glm::mat4(1.0f);
 	glm::mat4 view;
-	glm::mat4 projection = glm::perspective(glm::radians(45.0f), (GLfloat)800 / (GLfloat)600, 0.1f, 100.0f);
+	glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+
 
 	float near_plane = 1.0f;
 	float far_plane = 25.0f;
@@ -586,7 +589,7 @@ void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Camera& camera,
 		renderSimpleCube();
 	}
 	
-	///////////////////////Рисуем пол//////////////////////////////////////////////////////////
+	///////////////////////Рисуем пол/////////////////////////////////////////////////////////////
 	glBindVertexArray(planeVAO);
 
 	glBindTexture(GL_TEXTURE_2D, floorTexture);
@@ -603,9 +606,6 @@ void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Camera& camera,
 		float distance = glm::length(camera.Position - transparentPositions[i]);
 		sorted[distance] = transparentPositions[i];
 	}
-	
-
-	
 
 	for (std::map<float, glm::vec3>::reverse_iterator it = sorted.rbegin(); it != sorted.rend(); ++it)
 	{
@@ -615,7 +615,22 @@ void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Camera& camera,
 		
 		renderTransparent();
 	}
+	////////////////////////////////////ReflectCube///////////////////////////////////////////////
+	reflect_cubeShader.Use();
+	reflect_cubeShader.setInt("skybox", 0);
+
+	model = glm::mat4(1.0f);
+	model = glm::translate(model, glm::vec3(-1.0f, 3.0f, -1.0f));
 	
+	reflect_cubeShader.setMat4("model", model);
+	reflect_cubeShader.setMat4("view", view);
+	reflect_cubeShader.setMat4("projection", projection);
+	reflect_cubeShader.setVec3("cameraPos", camera.Position);
+
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, SkyboxTexture);
+
+	renderReflectCube();
 }
 
 GLFWwindow* CreateWindow(GLFWkeyfun key, GLFWcursorposfun mouse_callback, const char* s, int width, int height)

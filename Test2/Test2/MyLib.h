@@ -20,6 +20,9 @@
 #include <iostream>
 using namespace std;
 
+const unsigned int SCR_WIDTH = 800;
+const unsigned int SCR_HEIGHT = 600;
+
 class Shader
 {
 public:
@@ -65,7 +68,7 @@ public:glm::vec3 Position;
 
 	   GLfloat MovementSpeed;
 	   GLfloat MouseSensitivity;
-
+	   float Zoom;
 
 	   Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), GLfloat yaw = YAW, GLfloat pitch = PITCH);
 
@@ -80,7 +83,7 @@ public:glm::vec3 Position;
 
 	   void ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean constrainPitch = true);
 
-
+	   void ProcessMouseScroll(float yoffset);
 private:
 
 	void updateCameraVectors();
@@ -158,5 +161,5 @@ struct Scene
 	void renderSimpleCube();
 	void renderTransparent();
 	void renderReflectCube();
-	void renderScene( Shader&, Shader&, Camera&, GLfloat deltaTime);
+	void renderScene( Shader&, Shader&, Shader&, Camera&, GLfloat deltaTime);
 };
