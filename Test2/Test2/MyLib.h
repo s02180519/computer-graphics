@@ -119,6 +119,9 @@ struct Scene
 	GLuint reflectCubeVAO = 0;
 	GLuint reflectCubeVBO = 0;
 
+	GLuint refractCubeVAO = 0;
+	GLuint refractCubeVBO = 0;
+
 	GLuint floorTexture;
 	GLuint SkyboxTexture;
 	GLuint cubeTexture;
@@ -161,5 +164,6 @@ struct Scene
 	void renderSimpleCube();
 	void renderTransparent();
 	void renderReflectCube();
-	void renderScene( Shader&, Shader&, Shader&, Camera&, GLfloat deltaTime);
+	void renderRefractCube();
+	void renderScene( Shader&, Shader&, Shader&, Shader&, Camera&, GLfloat deltaTime);
 };

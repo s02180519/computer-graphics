@@ -507,6 +507,69 @@ void Scene::renderReflectCube() {
 	glBindVertexArray(0);
 }
 
+void Scene::renderRefractCube() {
+	if (refractCubeVAO == 0)
+	{
+		float vertices[] = {
+		-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+		 0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+		 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+		 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+		-0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+		-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+
+		-0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+		 0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+		 0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+		 0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+		-0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+		-0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+
+		-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+		-0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+		-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+		-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+		-0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+		-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+
+		 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+		 0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+		 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+		 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+		 0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+		 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+
+		-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+		 0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+		 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+		 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+		-0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+		-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+
+		-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+		 0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+		 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+		 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+		-0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+		-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
+		};
+		glGenVertexArrays(1, &refractCubeVAO);
+		glGenBuffers(1, &refractCubeVBO);
+		glBindVertexArray(refractCubeVAO);
+		glBindBuffer(GL_ARRAY_BUFFER, refractCubeVBO);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices, GL_STATIC_DRAW);
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+		glBindVertexArray(0);
+	}
+
+	glBindVertexArray(refractCubeVAO);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+	glBindVertexArray(0);
+}
+
 void Scene::renderTransparent() {
 	if (transparentVAO == 0)
 	{
@@ -540,7 +603,7 @@ void Scene::renderTransparent() {
 	glBindVertexArray(0);
 }
 
-void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect_cubeShader, Camera& camera, GLfloat deltaTime)
+void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect_cubeShader, Shader& refract_cubeShader, Camera& camera, GLfloat deltaTime)
 {
 	
 	//////////////////////////////////////////////////Матрицы преобразования//////////////////////////////////////////////////////////////////
@@ -615,13 +678,31 @@ void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect
 		
 		renderTransparent();
 	}
+
 	////////////////////////////////////ReflectCube///////////////////////////////////////////////
 	reflect_cubeShader.Use();
 	reflect_cubeShader.setInt("skybox", 0);
 
 	model = glm::mat4(1.0f);
-	model = glm::translate(model, glm::vec3(-1.0f, 3.0f, -1.0f));
+	model = glm::translate(model, glm::vec3(-4.0f, 3.0f, -1.0f));
 	
+	reflect_cubeShader.setMat4("model", model);
+	reflect_cubeShader.setMat4("view", view);
+	reflect_cubeShader.setMat4("projection", projection);
+	reflect_cubeShader.setVec3("cameraPos", camera.Position);
+
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, SkyboxTexture);
+
+	renderReflectCube();
+
+	////////////////////////////////////ReflectCube///////////////////////////////////////////////
+	refract_cubeShader.Use();
+	refract_cubeShader.setInt("skybox", 0);
+
+	model = glm::mat4(1.0f);
+	model = glm::translate(model, glm::vec3(-1.0f, 1.5f, -1.0f));
+
 	reflect_cubeShader.setMat4("model", model);
 	reflect_cubeShader.setMat4("view", view);
 	reflect_cubeShader.setMat4("projection", projection);

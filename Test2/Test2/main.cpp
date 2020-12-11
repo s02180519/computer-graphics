@@ -255,7 +255,7 @@ int main()
 		view = camera.GetViewMatrix();
 		
 		
-		scene.renderScene( ourShader, skyboxShader, reflect_cubeShader, camera, deltaTime);
+		scene.renderScene( ourShader, skyboxShader, reflect_cubeShader, refract_cubeShader, camera, deltaTime);
 
 
 		////////////////////////////Refract cube////////////////////////////////////////////////////////////
