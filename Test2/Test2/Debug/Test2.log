@@ -1,0 +1,9 @@
+﻿  main.cpp
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(217): warning C4244: инициализация: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(364): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(365): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(368): warning C4244: инициализация: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(369): warning C4244: инициализация: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(371): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(372): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+  Test2.vcxproj -> C:\Users\redki\Desktop\Машграф\Test2\Debug\Test2.exe
