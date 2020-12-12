@@ -125,7 +125,7 @@ int main()
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
-	//
+
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -151,7 +151,7 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 		
-		scene.renderScene( ourShader, skyboxShader, reflect_cubeShader, refract_cubeShader, camera);
+		scene.renderScene( ourShader, skyboxShader, reflect_cubeShader, refract_cubeShader, camera, deltaTime);
 
 
 		//////////////////////////////////////////Возвращение фреймбуфера//////////////////////////////////////////////////////

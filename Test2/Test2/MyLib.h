@@ -149,7 +149,7 @@ struct Scene
 		
 		transparentTexture = loadTexture("textures/glass.png");
 		floorTexture = loadTexture("textures/floor.jpg");
-		cubeTexture = loadTexture("textures/cube1.png");
+		cubeTexture = loadTexture("textures/cube.jpg");
 		SkyboxTexture = loadCubemap(faces);
 
 		transparentPositions.push_back(glm::vec3(-2.21f, 0.0f, -0.01f));
@@ -165,5 +165,5 @@ struct Scene
 	void renderTransparent();
 	void renderReflectCube();
 	void renderRefractCube();
-	void renderScene( Shader&, Shader&, Shader&, Shader&, Camera&);
+	void renderScene( Shader&, Shader&, Shader&, Shader&, Camera&, GLfloat deltaTime);
 };
