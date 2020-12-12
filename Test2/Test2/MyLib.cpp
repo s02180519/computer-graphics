@@ -603,7 +603,7 @@ void Scene::renderTransparent() {
 	glBindVertexArray(0);
 }
 
-void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect_cubeShader, Shader& refract_cubeShader, Camera& camera, GLfloat deltaTime)
+void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect_cubeShader, Shader& refract_cubeShader, Camera& camera)
 {
 	
 	//////////////////////////////////////////////////Матрицы преобразования//////////////////////////////////////////////////////////////////
@@ -632,10 +632,20 @@ void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect
 
 	glEnable(GL_DEPTH_TEST);
 
-	
-	////////////////////////////Простой куб////////////////////////////////////////////////////////////
+	///////////////////////Рисуем пол/////////////////////////////////////////////////////////////
 	ourShader.Use();
 	ourShader.setInt("texture1", 0);
+	
+	glBindVertexArray(planeVAO);
+
+	glBindTexture(GL_TEXTURE_2D, floorTexture);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+	renderFloor();
+	
+
+	
+	////////////////////////////Простой куб////////////////////////////////////////////////////////////
+	
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, cubeTexture);
 
@@ -651,14 +661,6 @@ void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect
 		
 		renderSimpleCube();
 	}
-	
-	///////////////////////Рисуем пол/////////////////////////////////////////////////////////////
-	glBindVertexArray(planeVAO);
-
-	glBindTexture(GL_TEXTURE_2D, floorTexture);
-	glDrawArrays(GL_TRIANGLES, 0, 6);
-	renderFloor();
-
 	////////////////////////////////////Окно//////////////////////////////////////////////////////
 	glBindVertexArray(transparentVAO);
 	glBindTexture(GL_TEXTURE_2D, transparentTexture);
@@ -678,7 +680,6 @@ void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect
 		
 		renderTransparent();
 	}
-
 	////////////////////////////////////ReflectCube///////////////////////////////////////////////
 	reflect_cubeShader.Use();
 	reflect_cubeShader.setInt("skybox", 0);
@@ -696,7 +697,7 @@ void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect
 
 	renderReflectCube();
 
-	////////////////////////////////////ReflectCube///////////////////////////////////////////////
+	////////////////////////////////////RefractCube///////////////////////////////////////////////
 	refract_cubeShader.Use();
 	refract_cubeShader.setInt("skybox", 0);
 
@@ -708,8 +709,6 @@ void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect
 	reflect_cubeShader.setMat4("projection", projection);
 	reflect_cubeShader.setVec3("cameraPos", camera.Position);
 
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_CUBE_MAP, SkyboxTexture);
 
 	renderReflectCube();
 }
