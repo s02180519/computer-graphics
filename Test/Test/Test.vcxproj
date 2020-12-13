@@ -128,6 +128,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MyLib.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyLib.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\лера\КОМПГРАФ\1 часть\итог по первой части\test.frag" />
+    <None Include="..\..\..\лера\КОМПГРАФ\1 часть\итог по первой части\test.vert" />
+    <None Include="FragmentShaderShadow.frag" />
+    <None Include="FragmentShaderSkybox.frag" />
+    <None Include="FragmentShaderSource.frag" />
+    <None Include="GeometryShaderShadow.geom" />
+    <None Include="light_fragment_shader.frag" />
+    <None Include="light_vertex_shader.vert" />
+    <None Include="SourceShader.frag" />
+    <None Include="SourceShader.vert" />
+    <None Include="VertexShaderShadow.vert" />
+    <None Include="VertexShaderSkybox.vert" />
+    <None Include="VertexShaderSource.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

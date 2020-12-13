@@ -18,5 +18,54 @@
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="MyLib.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyLib.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SourceShader.vert">
+      <Filter>Исходные файлы</Filter>
+    </None>
+    <None Include="SourceShader.frag">
+      <Filter>Исходные файлы</Filter>
+    </None>
+    <None Include="FragmentShaderShadow.frag">
+      <Filter>Исходные файлы</Filter>
+    </None>
+    <None Include="FragmentShaderSkybox.frag">
+      <Filter>Исходные файлы</Filter>
+    </None>
+    <None Include="FragmentShaderSource.frag">
+      <Filter>Исходные файлы</Filter>
+    </None>
+    <None Include="GeometryShaderShadow.geom">
+      <Filter>Исходные файлы</Filter>
+    </None>
+    <None Include="light_fragment_shader.frag">
+      <Filter>Исходные файлы</Filter>
+    </None>
+    <None Include="light_vertex_shader.vert">
+      <Filter>Исходные файлы</Filter>
+    </None>
+    <None Include="VertexShaderShadow.vert">
+      <Filter>Исходные файлы</Filter>
+    </None>
+    <None Include="VertexShaderSkybox.vert">
+      <Filter>Исходные файлы</Filter>
+    </None>
+    <None Include="VertexShaderSource.vert">
+      <Filter>Исходные файлы</Filter>
+    </None>
+    <None Include="..\..\..\лера\КОМПГРАФ\1 часть\итог по первой части\test.vert">
+      <Filter>Исходные файлы</Filter>
+    </None>
+    <None Include="..\..\..\лера\КОМПГРАФ\1 часть\итог по первой части\test.frag">
+      <Filter>Исходные файлы</Filter>
+    </None>
   </ItemGroup>
 </Project>
