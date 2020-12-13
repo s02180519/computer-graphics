@@ -1,0 +1,44 @@
+﻿cl : командная строка warning D9035: использование параметра "Gm" нежелательно, он будет удален в следующих выпусках
+  stb_image_aug.c
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\stb_image_aug.c(177): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note:  см. объявление "fopen"
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\stb_image_aug.c(251): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note:  см. объявление "fopen"
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\stb_image_aug.c(303): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note:  см. объявление "fopen"
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\stb_image_aug.c(1557): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note:  см. объявление "fopen"
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\stb_image_aug.c(2394): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note:  см. объявление "fopen"
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\stb_image_aug.c(2709): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note:  см. объявление "fopen"
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\stb_image_aug.c(2995): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note:  см. объявление "fopen"
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\stb_image_aug.c(3209): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note:  см. объявление "fopen"
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\stb_image_aug.c(3548): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note:  см. объявление "fopen"
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\stb_image_aug.c(3644): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note:  см. объявление "fopen"
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\stbi_dds_aug_c.h(362): warning C4018: >: несоответствие типов со знаком и без знака
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\stbi_dds_aug_c.h(366): warning C4018: >: несоответствие типов со знаком и без знака
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\stbi_dds_aug_c.h(390): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\stbi_dds_aug_c.h(427): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\stbi_dds_aug_c.h(498): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note:  см. объявление "fopen"
+  SOIL.c
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\soil.c(1728): warning C4018: <=: несоответствие типов со знаком и без знака
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\soil.c(1738): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\soil.c(1849): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note:  см. объявление "fopen"
+  image_helper.c
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\image_helper.c(325): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\image_helper.c(366): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\image_helper.c(373): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\image_helper.c(415): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\image_helper.c(422): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+  image_DXT.c
+c:\users\redki\desktop\машграф\simple-opengl-image-library-master\src\image_dxt.c(92): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note:  см. объявление "fopen"
+  Создание кода...
+  SOIL.vcxproj -> C:\Users\redki\Desktop\Машграф\Simple-OpenGL-Image-Library-master\projects\VC8\Debug\SOIL.lib
