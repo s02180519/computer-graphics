@@ -133,7 +133,13 @@ struct Scene
 	glm::vec3(2.0f, 0.0f, 0.0f)
 	};
 	
-	vector<glm::vec3> transparentPositions;
+	vector<glm::vec3> transparentPositions{
+		glm::vec3(-2.21f, 0.0f, -0.01f),
+		glm::vec3(2.0f, 0.0f, 1.51f),
+		glm::vec3(0.0f, 0.0f, 0.7f),
+		glm::vec3(-0.3f, 0.0f, -2.3f),
+		glm::vec3(0.5f, 0.0f, -0.6f)
+	};
 	
 	Scene()
 	{
@@ -152,11 +158,6 @@ struct Scene
 		cubeTexture = loadTexture("textures/cube.jpg");
 		SkyboxTexture = loadCubemap(faces);
 
-		transparentPositions.push_back(glm::vec3(-2.21f, 0.0f, -0.01f));
-		transparentPositions.push_back(glm::vec3(2.0f, 0.0f, 1.51f));
-		transparentPositions.push_back(glm::vec3(0.0f, 0.0f, 0.7f));
-		transparentPositions.push_back(glm::vec3(-0.3f, 0.0f, -2.3f));
-		transparentPositions.push_back(glm::vec3(0.5f, 0.0f, -0.6f));
 	}
 
 	void renderSkybox();

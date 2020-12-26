@@ -1,2 +1,12 @@
 ﻿  MyLib.cpp
+  main.cpp
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(134): warning C4244: инициализация: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(222): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(223): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(226): warning C4244: инициализация: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(227): warning C4244: инициализация: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(229): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(230): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\redki\desktop\машграф\test2\test2\main.cpp(237): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+  Создание кода...
   Test2.vcxproj -> C:\Users\redki\Desktop\Машграф\Test2\Debug\Test2.exe

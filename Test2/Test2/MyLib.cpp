@@ -573,8 +573,9 @@ void Scene::renderRefractCube() {
 void Scene::renderTransparent() {
 	if (transparentVAO == 0)
 	{
-		float transparentVertices[] = {
-			// positions         // texture
+		
+		GLfloat billboardVertices[] = {
+			// position			// texture
 			0.0f,  0.5f,  0.0f,  0.0f,  0.0f,
 			0.0f, -0.5f,  0.0f,  0.0f,  1.0f,
 			1.0f, -0.5f,  0.0f,  1.0f,  1.0f,
@@ -584,26 +585,25 @@ void Scene::renderTransparent() {
 			1.0f,  0.5f,  0.0f,  1.0f,  0.0f
 		};
 		glGenVertexArrays(1, &transparentVAO);
-		glBindVertexArray(transparentVAO);
-
 		glGenBuffers(1, &transparentVBO);
+		glBindVertexArray(transparentVAO);
 		glBindBuffer(GL_ARRAY_BUFFER, transparentVBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(transparentVertices), transparentVertices, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(billboardVertices), &billboardVertices, GL_STATIC_DRAW);
 
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)0);
 		glEnableVertexAttribArray(0);
-
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 		glEnableVertexAttribArray(1);
-
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindVertexArray(0);
 	}
 	glBindVertexArray(transparentVAO);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);
+
 }
 
-void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect_cubeShader, Shader& refract_cubeShader, Camera& camera, GLfloat deltaTime)
+void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect_cubeShader, Shader& refract_cubeShader,Camera& camera, GLfloat deltaTime)
 {
 	
 	//////////////////////////////////////////////////Матрицы преобразования//////////////////////////////////////////////////////////////////
@@ -660,24 +660,30 @@ void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect
 	renderFloor();
 
 	////////////////////////////////////Окно//////////////////////////////////////////////////////
+
 	glBindVertexArray(transparentVAO);
 	glBindTexture(GL_TEXTURE_2D, transparentTexture);
 	
-	std::map<float, glm::vec3> sorted;
-	for (unsigned int i = 0; i < transparentPositions.size(); i++)
-	{
-		float distance = glm::length(camera.Position - transparentPositions[i]);
-		sorted[distance] = transparentPositions[i];
+
+	for (int i = 0, n = transparentPositions.size(); i + 1 < n; i++) {
+		for (int j = i; j < n; j++) {
+			glm::vec3 delta1 = transparentPositions[i] - camera.Position;
+			glm::vec3 delta2 = transparentPositions[j] - camera.Position;
+			if (dot(delta1, delta1) < dot(delta2, delta2)) {
+				glm::vec3 tmp = transparentPositions[i];
+				transparentPositions[i] = transparentPositions[j];
+				transparentPositions[j] = tmp;
+			}
+		}
 	}
 
-	for (std::map<float, glm::vec3>::reverse_iterator it = sorted.rbegin(); it != sorted.rend(); ++it)
-	{
+	for (int i = 0, n = transparentPositions.size(); i < n; i++) {
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, it->second);
+		model = glm::translate(model, transparentPositions[i]);
 		ourShader.setMat4("model", model);
-		
 		renderTransparent();
 	}
+
 
 	////////////////////////////////////ReflectCube///////////////////////////////////////////////
 	reflect_cubeShader.Use();
