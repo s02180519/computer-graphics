@@ -84,7 +84,7 @@ private:
 
 GLuint loadTexture(char const* path);
 GLuint loadCubemap(vector<std::string> faces);
-GLFWwindow* CreateWindow(GLFWkeyfun, GLFWcursorposfun, const char* s = "LearnOpenGL", int width = 800, int height = 600);
+GLFWwindow* CreateWindow(GLFWkeyfun, GLFWcursorposfun, const char* s = "scene 1", int width = 800, int height = 600);
 
 struct Scene
 {
@@ -99,11 +99,16 @@ struct Scene
 
 	GLuint lightVAO = 0;
 
+	GLuint wallVAO = 0;
+	GLuint wallVBO = 0;
+
 	GLuint floorTexture;
 	GLuint floorSpecular;
 	GLuint cubemapTexture;
 	GLuint diffuseMap;
 	GLuint specularMap;
+	GLuint mappingDiffuseMap;
+	GLuint mappingNormalMap;
 
 	glm::vec3 cubePositions[9] = {
 	glm::vec3(-2.5f,  -2.61f,  -1.2f),
@@ -135,6 +140,8 @@ struct Scene
 		cubemapTexture = loadCubemap(faces);
 		diffuseMap = loadTexture("textures/container2.png");
 		specularMap = loadTexture("textures/container2_specular.png");
+		mappingDiffuseMap = loadTexture("textures/brickwall.jpg");
+		mappingNormalMap = loadTexture("textures/brickwall_normal.jpg");
 	}
 
 
@@ -146,5 +153,6 @@ struct Scene
 	void renderFloor();
 	void renderLamp();
 	void renderSkybox();
-	void renderScene(int, Shader&, Shader&, Shader&, Camera&);
+	void renderWall();
+	void renderScene(int, Shader&, Shader&, Shader&, Shader&, Camera&);
 };

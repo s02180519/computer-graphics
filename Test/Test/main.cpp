@@ -46,7 +46,7 @@ int main()
 
 
 	//////////////////////////////Шейдеры//////////////////////////////////////////////////////////
-
+	Shader mappingShader("mapping.vert", "mapping.frag");
 	Shader ourShader("VertexShaderSource.vert", "FragmentShaderSource.frag");
 	Shader skyboxShader("VertexShaderSkybox.vert", "FragmentShaderSkybox.frag");
 	Shader lampShader("light_vertex_shader.vert", "light_fragment_shader.frag");
@@ -98,7 +98,7 @@ int main()
 		glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
 		glClear(GL_DEPTH_BUFFER_BIT);
 		glCullFace(GL_FRONT);
-		scene.renderScene(1, shadowShader, skyboxShader, lampShader, camera);
+		scene.renderScene(1, shadowShader, skyboxShader, lampShader, mappingShader, camera);
 		glCullFace(GL_BACK);
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
@@ -107,13 +107,16 @@ int main()
 		glViewport(0, 0, 800, 600);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		mappingShader.Use();
+		mappingShader.setInt("diffuseMap", 0);
+		mappingShader.setInt("normalMap", 1);
 		ourShader.Use();
 		ourShader.setInt("depthMap", 2);
 		glActiveTexture(GL_TEXTURE2);
 		glBindTexture(GL_TEXTURE_CUBE_MAP, depthCubemap);
 
 
-		scene.renderScene(0, ourShader, skyboxShader, lampShader, camera);
+		scene.renderScene(0, ourShader, skyboxShader, lampShader, mappingShader, camera);
 
 		glfwSwapBuffers(window);
 	}
