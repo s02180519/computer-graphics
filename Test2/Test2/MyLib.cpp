@@ -1,4 +1,9 @@
 #include "MyLib.h"
+
+float heightScale = 0.1;
+glm::vec3 lightPos(0.5f, 1.0f, 0.3f);
+
+
 Shader::Shader(const GLchar* vertexPath, const GLchar* fragmentPath)
 {
 	std::string vertexCode;
@@ -603,7 +608,8 @@ void Scene::renderTransparent() {
 
 }
 
-void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect_cubeShader, Shader& refract_cubeShader,Camera& camera, GLfloat deltaTime)
+
+void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect_cubeShader, Shader& refract_cubeShader, Camera& camera, GLfloat deltaTime)
 {
 	
 	//////////////////////////////////////////////////Матрицы преобразования//////////////////////////////////////////////////////////////////
@@ -634,6 +640,8 @@ void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect
 
 	
 	////////////////////////////Простой куб////////////////////////////////////////////////////////////
+	
+
 	ourShader.Use();
 	ourShader.setInt("texture1", 0);
 	glActiveTexture(GL_TEXTURE0);
@@ -653,6 +661,7 @@ void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect
 	}
 	
 	///////////////////////Рисуем пол/////////////////////////////////////////////////////////////
+	ourShader.Use();
 	glBindVertexArray(planeVAO);
 
 	glBindTexture(GL_TEXTURE_2D, floorTexture);
@@ -713,10 +722,11 @@ void Scene::renderScene(Shader& ourShader, Shader& skyboxShader, Shader& reflect
 	reflect_cubeShader.setMat4("view", view);
 	reflect_cubeShader.setMat4("projection", projection);
 	reflect_cubeShader.setVec3("cameraPos", camera.Position);
-
+	renderRefractCube();
 	
-
-	renderReflectCube();
+	/////////////////////////////////////////////////////////
+	
+	
 }
 
 GLFWwindow* CreateWindow(GLFWkeyfun key, GLFWcursorposfun mouse_callback, const char* s, int width, int height)

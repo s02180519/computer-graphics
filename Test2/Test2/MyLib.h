@@ -1,5 +1,6 @@
 #pragma once
 
+#define GLEW_STATIC
 
 #include <string>
 #include <fstream>
@@ -18,6 +19,16 @@
 #include <GL/glew.h> 
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include "ShaderSmoke.h"
+#define WIDTH 800
+#define HEIGHT 600
+
+//GLfloat T = 0.0f;
+
+/*float randFloat() {
+	return ((float)rand() / RAND_MAX);
+}*/
+
 using namespace std;
 
 const unsigned int SCR_WIDTH = 800;
@@ -100,7 +111,7 @@ public:
 
 GLuint loadTexture(char const* path);
 GLuint loadCubemap(vector<std::string> faces);
-GLFWwindow* CreateWindow(GLFWkeyfun, GLFWcursorposfun, const char* s = "LearnOpenGL", int width = 800, int height = 600);
+GLFWwindow* CreateWindow(GLFWkeyfun, GLFWcursorposfun, const char* s = "scene 2", int width = 800, int height = 600);
 
 struct Scene
 {
@@ -122,11 +133,12 @@ struct Scene
 	GLuint refractCubeVAO = 0;
 	GLuint refractCubeVBO = 0;
 
+
 	GLuint floorTexture;
 	GLuint SkyboxTexture;
 	GLuint cubeTexture;
 	GLuint transparentTexture;
-
+	//GLuint smokeTexture;
 
 	glm::vec3 cubePositions[2] = {
 	glm::vec3(-1.0f, 0.0f, -1.0f),
@@ -155,9 +167,10 @@ struct Scene
 		
 		transparentTexture = loadTexture("textures/glass.png");
 		floorTexture = loadTexture("textures/floor.jpg");
-		cubeTexture = loadTexture("textures/cube.jpg");
+		cubeTexture = loadTexture("textures/kir.jpg");
 		SkyboxTexture = loadCubemap(faces);
-
+		
+		
 	}
 
 	void renderSkybox();
@@ -166,5 +179,6 @@ struct Scene
 	void renderTransparent();
 	void renderReflectCube();
 	void renderRefractCube();
+	void renderQuad();
 	void renderScene( Shader&, Shader&, Shader&, Shader&, Camera&, GLfloat deltaTime);
 };

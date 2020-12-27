@@ -139,6 +139,8 @@
     <None Include="FragmentShader_Framebuffer.frag" />
     <None Include="FragmentShader_ReflectCube.frag" />
     <None Include="FragmentShader_RefractCube.frag" />
+    <None Include="parallax.frag" />
+    <None Include="parallax.vert" />
     <None Include="VertexShaderSkybox.vert" />
     <None Include="VertexShaderSource.vert" />
     <None Include="VertexShader_Framebuffer.vert" />

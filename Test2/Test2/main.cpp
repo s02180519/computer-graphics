@@ -11,6 +11,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include "Smoke.h"
 
 using namespace std;
 
@@ -62,7 +63,8 @@ int main()
 	//////////////////////////////Создание сцены///////////////////////////////////////////////////
 	Scene scene;
 	//////////////////////////////Шейдеры//////////////////////////////////////////////////////////
-
+	
+	
 	Shader ourShader("VertexShaderSource.vert", "FragmentShaderSource.frag");
 	Shader skyboxShader("VertexShaderSkybox.vert", "FragmentShaderSkybox.frag");
 	Shader refract_cubeShader("VertexShader_RefractCube.vert", "FragmentShader_RefractCube.frag");
@@ -124,7 +126,9 @@ int main()
 		cout << "ERROR::FRAMEBUFFER:: Framebuffer is not complete!" << endl;
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+
 	/////////////////////////////////////////////////////////////////////////////////////////////
+	//Smoke cloud;
 
 
 	while (!glfwWindowShouldClose(window))
@@ -152,7 +156,7 @@ int main()
 		
 		
 		scene.renderScene( ourShader, skyboxShader, reflect_cubeShader, refract_cubeShader, camera, deltaTime);
-
+		//cloud.Draw();
 
 		//////////////////////////////////////////Возвращение фреймбуфера//////////////////////////////////////////////////////
 

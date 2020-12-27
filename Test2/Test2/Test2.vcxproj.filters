@@ -58,5 +58,11 @@
     <None Include="VertexShader_ReflectCube.vert">
       <Filter>Исходные файлы</Filter>
     </None>
+    <None Include="parallax.vert">
+      <Filter>Исходные файлы</Filter>
+    </None>
+    <None Include="parallax.frag">
+      <Filter>Исходные файлы</Filter>
+    </None>
   </ItemGroup>
 </Project>
